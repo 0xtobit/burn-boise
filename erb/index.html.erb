@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <title> </title>
+  <head>
+    <style>
+      footer {
+        bottom: 0px;
+      }
+    </style>
+  </head>
+  <title>Can I burn - Boise?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
   <body class="<%="w-100 white helvetica center bg-#{background_color}"%>">
-    <div class='center pv7'>
-      <div class='w-40 flex center'>
-        <h1 class='f1 lh-copy center'>
-          <%= message %><br>
+    <div class="center pv7">
+      <div class="w-100 flex center">
+        <h1 class="f1 lh-copy center">
+          <%= message %>
         </h1>
       </div>
-      <div class='w-40 flex center'>
-        <a class="center link dark-gray o-50" href="<%= url %>">
+      <div class="w-100 flex center">
+        <a class="link dark-gray o-50 ttu tracked center" href="<%= url %>">
           AQI: <%= aqi %>
         </a>
       </div>
     </div>
-    <footer class="w-30 flex center">
-      <small class='center'>
-        <a class='link gray o-50 center' href="https://github.com/0xtobit/burn-boise">- @0xtobit</a>
-      </small>
-    </footer>
+      <footer class="w-100 fixed pa3 center">
+        <small class="center flex">
+          <a class="link tracked dark-gray o-50 center" href="https://github.com/0xtobit/burn-boise">- @0xtobit</a>
+        </small>
+      </footer>
   </body>
 </html>
