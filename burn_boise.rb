@@ -36,5 +36,6 @@ get '/' do
 end
 
 get '/aqi/:zipcode' do
-   get_aqi(params[:zipcode])
+   content_type :json
+   get_aqi(params[:zipcode]).to_json
 end
