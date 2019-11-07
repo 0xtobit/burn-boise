@@ -5,7 +5,7 @@ require './lib/regulations'
 
 get '/' do
   zipcode = params[:zipcode] || "83704"
-  aqi = get_aqi(zipcode)
+  aqi, url = get_aqi(zipcode)
 
   prohibited = Regulations.prohibited_reactors(zipcode, aqi)
 
