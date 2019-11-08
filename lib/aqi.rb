@@ -6,5 +6,5 @@ def get_aqi(zipcode)
   doc = HTTParty.get(url)
   parsed_page ||= Nokogiri::HTML(doc)
   aqi = parsed_page.css('.TblInvisible')[0].text[/\d+/].to_i
-  aqi
+  [aqi, url]
 end

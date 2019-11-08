@@ -1,6 +1,6 @@
 # Burn Boise
 
-A simple Sinatra app that takes the [Air Quality Index (AQI)](https://airnow.gov/) and compares it with [Boise local ordinances](http://www2.deq.idaho.gov/air/AQIPublic/Ordinance/Index/3) to let you know whether current are within ordinances based off of forecasts.
+A simple Sinatra app that takes the [Air Quality Index (AQI)](https://airnow.gov/) and compares it with [Boise local ordinances](http://www2.deq.idaho.gov/air/AQIPublic/Ordinance/Index/3) to let you know whether current conditions are within ordinances based off of forecasts.
 
 DISCLAIMER: Official restrictions are served [here](http://www2.deq.idaho.gov/air/AQIPublic/Forecast?siteId=14). *Furthermore, prohibitions are based off of the forecast, not actual conditions.* That is, an AQI lower than forecase does not necessarily mean it is okay for you to burn. For more information on open burning requirements, please contact your local city or county office.
 
