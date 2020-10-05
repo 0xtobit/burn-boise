@@ -1,6 +1,5 @@
 require 'httparty'
 require 'nokogiri'
-require 'pry'
 
 def get_aqi(location)
   token = ENV["AQI_API_TOKEN"]
