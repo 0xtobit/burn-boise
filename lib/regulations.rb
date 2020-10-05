@@ -23,64 +23,24 @@ class Regulations
     "wilder" => {}
   }
 
-  Zipcodes = {
-    "83605" => ["caldwell", "canyon"],
-    "83607" => ["caldwell", "canyon"],
-    "83626" => ["greenleaf", "canyon"],
-    "83641" => ["melba", "canyon"],
-    "83644" => ["middleton", "canyon"],
-    "83651" => ["nampa", "canyon"],
-    "83660" => ["parma", "canyon"],
-    "83676" => ["wilder", "canyon"],
-    "83686" => ["nampa", "canyon"],
-    "83687" => ["nampa", "canyon"],
-    "83616" => ["eagle", "ada"],
-    "83634" => ["kuna", "ada"],
-    "83642" => ["meridian", "ada"],
-    "83646" => ["star", "ada"],
-    "83702" => ["boise", "ada"],
-    "83703" => ["boise", "ada"],
-    "83704" => ["boise", "ada"],
-    "83705" => ["boise", "ada"],
-    "83706" => ["boise", "ada"],
-    "83708" => ["boise", "ada"],
-    "83709" => ["boise", "ada"],
-    "83712" => ["boise", "ada"],
-    "83713" => ["boise", "ada"],
-    "83714" => ["garden city", "ada"],
-    "83716" => ["boise", "ada"],
-    "83720" => ["boise", "ada"],
-    "83722" => ["boise", "ada"],
-    "83724" => ["boise", "ada"],
-    "83725" => ["boise", "ada"],
-    "83726" => ["boise", "ada"],
-    "83728" => ["boise", "ada"],
-    "83729" => ["boise", "ada"],
-    "83732" => ["boise", "ada"],
-    "83735" => ["boise", "ada"],
-    "83756" => ["boise", "ada"]
-  }
-
-  def self.prohibited_reactors(zipcode, aqi)
+  def self.prohibited_reactors(location, aqi)
     prohibited = nil
-    if Zipcodes.key?(zipcode)
+    if Regulations.key?(location)
       prohibited = Set[]
-      for regulation_key in Zipcodes[zipcode]
-        Regulations[regulation_key].each do | aqi_threshold, reactors |
-          if aqi >= aqi_threshold
-              prohibited.merge(reactors)
-          end
+      Regulations[location].each do | aqi_threshold, reactors |
+        if aqi >= aqi_threshold
+            prohibited.merge(reactors)
         end
       end
     end
     prohibited
   end
 
-  def self.burn(zipcode, reactor, aqi=nil)
+  def self.burn(location, reactor, aqi=nil)
     burn = nil
-    if Zipcodes.key?(zipcode) and Reactors.include?(reactor)
-      aqi = aqi || get_aqi(zipcode)
-      prohibited = prohibited_reactors(zipcode, aqi)
+    if Regulations.key?(location) and Reactors.include?(reactor)
+      aqi = aqi || get_aqi(location)
+      prohibited = prohibited_reactors(location, aqi)
       burn = not(prohibited.include?(reactor))
     end
     burn

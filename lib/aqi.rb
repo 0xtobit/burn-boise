@@ -1,10 +1,11 @@
 require 'httparty'
 require 'nokogiri'
+require 'pry'
 
-def get_aqi(zipcode)
-  url = "https://airnow.gov/index.cfm?action=airnow.local_city&zipcode=#{zipcode}&submit=Go"
-  doc = HTTParty.get(url)
-  parsed_page ||= Nokogiri::HTML(doc)
-  aqi = parsed_page.css('.TblInvisible')[0].text[/\d+/].to_i
+def get_aqi(location)
+  token = ENV["AQI_API_TOKEN"]
+  url = "https://api.waqi.info/feed/#{location}/?token=#{token}"
+  data = HTTParty.get(url)
+  aqi = data["data"]["aqi"]
   [aqi, url]
 end
